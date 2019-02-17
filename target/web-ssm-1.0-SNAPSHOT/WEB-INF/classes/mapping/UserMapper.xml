@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.ssm.dao.UserMapper">
+
+
+	<resultMap id="userMap" type="com.ly.ssm.model.User">
+	<id column="id" property="name" jdbcType="BIGINT"/>
+	<result column="name" property="username" jdbcType="LONGVARCHAR"/>
+	<result column="password" property="password" jdbcType="LONGVARCHAR"/>
+	<result column="status" property="status" jdbcType="LONGVARCHAR"/>
+	<result column="regTime" property="regTime" jdbcType="DATE"/>
+	</resultMap>
+
+	<select id="login" resultType="com.ly.ssm.model.User" resultMap="userMap">
+		SELECT *
+		from user WHERE name=#{username} and password=#{password}
+
+	</select>
+
+</mapper>
